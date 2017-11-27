@@ -159,13 +159,15 @@ open class CameraViewController: UIViewController {
 	
 	private let allowsLibraryAccess: Bool
   
-    public init(croppingParameters: CroppingParameters = CroppingParameters(),
+    public init(croppingEnabled: Bool = true,
+                allowResizing: Bool = true,
+                allowMoving: Bool = true,
                 allowsLibraryAccess: Bool = true,
                 allowsSwapCameraOrientation: Bool = true,
                 allowVolumeButtonCapture: Bool = true,
                 completion: @escaping CameraViewCompletion) {
 
-        self.croppingParameters = croppingParameters
+        self.croppingParameters = CroppingParameters(isEnabled: croppingEnabled, allowResizing: allowResizing, allowMoving: allowMoving)
         self.allowsLibraryAccess = allowsLibraryAccess
         self.allowVolumeButtonCapture = allowVolumeButtonCapture
         super.init(nibName: nil, bundle: nil)
