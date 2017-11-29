@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     var libraryEnabled: Bool = true
-    var croppingEnabled: Bool = false
-    var allowResizing: Bool = true
+    var croppingEnabled: Bool = true
+    var allowResizing: Bool = false
     var allowMoving: Bool = false
     var minimumSize: CGSize = CGSize(width: 60, height: 60)
 
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openCamera(_ sender: Any) {
-        let cameraViewController = CameraViewController(croppingParameters: croppingParameters, allowsLibraryAccess: libraryEnabled) { [weak self] image, asset in
+        let cameraViewController = CameraViewController(croppingEnabled: croppingEnabled, allowResizing: allowResizing, allowMoving: allowMoving, allowsLibraryAccess: libraryEnabled) { [weak self] image, asset in
             self?.imageView.image = image
             self?.dismiss(animated: true, completion: nil)
         }
